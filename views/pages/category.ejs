@@ -1,0 +1,9 @@
+<h1>Kategorie:</h1>
+<a href="/" class="btn btn-info">Strona główna</a>
+<a href="/dodaj-kategorie" class="btn btn-success">DODAJ KATEGORIE</a>
+
+<div class="mt-5 h5">
+     <% categories.forEach(x=> { %>
+          <p><%- x.category %></p>
+          <% }) %>
+</div>

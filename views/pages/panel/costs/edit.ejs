@@ -1,0 +1,42 @@
+<div
+     class="position-absolute top-50 start-50 translate-middle z-1 bg-secondary-subtle border border-dark-subtle rounded-4 rounded p-4">
+     <form method="POST">
+
+          <div class="mb-3"><label for="">Typ</label><br>
+               <select name="type" id="">
+                    <option value="dochód" <%- cost?.type==='dochód' ? 'selected' : '' %>>Dochód</option>
+                    <option value="koszt" <%- cost?.type==='koszt' ? 'selected' : '' %>>Koszt</option>
+               </select>
+          </div>
+          <div class="mb-3"><label for="">Nazwa</label><br>
+               <input type="text" value="<%= cost.name %>" name="name"><br>
+          </div>
+          <div class="mb-3"><label for="">Kwota</label><br>
+               <input type="number" value="<%= cost.amount %>" name="amount"><br>
+          </div>
+          <div class="mb-3"><label for="">Portfel</label><br>
+               <select name="wallet" id="">
+                    <% wallets.forEach(w=> { %>
+                         <option value="<%- w.name %>" <%- w?.name===wallet.name ? 'selected' : '' %>><%- w.name %>
+                         </option>
+                         <% }) %>
+               </select>
+          </div>
+          <div class="mb-3"><label for="">Kategoria</label><br>
+               <select name="category" id="">
+                    <option value="Brak kategorii">Brak kategorii</option>
+
+                    <% categories.forEach(x=> { %>
+                         <option value="<%- x?.category %>" <%- x?.category===cost.category ? 'selected' : '' %>><%-
+                                   x.category %></option>
+                         <% }) %>
+
+               </select>
+          </div>
+          <div class="mb-3"><label for="">Data</label><br>
+               <input type="date" value="<%= cost.date %>" name="date">
+          </div>
+
+          <button class="btn btn-success">Zatwierdź</button>
+</div>
+</form>

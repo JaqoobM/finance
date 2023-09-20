@@ -1,0 +1,45 @@
+.hidden {
+	display: none;
+}
+
+.hidden-edit {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.btn-add-income {
+	color: #11b902;
+	border: solid 1px #11b902;
+	border-radius: 5px;
+	padding: 8px;
+}
+
+.btn-add-income:hover {
+	background-color: #11b902;
+	color: #fff;
+}
+
+.btn-add-cost {
+	color: #b91d02;
+	border: solid 1px #b91d02;
+	border-radius: 5px;
+	padding: 8px;
+}
+
+.btn-add-cost:hover {
+	background-color: #b91d02;
+	color: #fff;
+}
+
+.activedIncome {
+	background-color: #11b902;
+	color: #fff;
+}
+
+.activedCost {
+	background-color: #b91d02;
+	color: #fff;
+}

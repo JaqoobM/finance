@@ -1,0 +1,13 @@
+<div class="col-4 card p-4">
+     <% if (wallets.length> 0) { %>
+          <% wallets.forEach(wallet=> { %>
+               <div class="card mb-1 p-2">
+                    <p class="h5"><%- wallet.name %></p>
+                    <p class="text-primary h5"><%- wallet.amount %>zł</p>
+               </div>
+               <% }) %>
+                    <% } else { %>
+                         <p class="h5 text-center text-secondary">Brak portfeli do wyświetlenia</p>
+                         <% } %>
+
+</div>

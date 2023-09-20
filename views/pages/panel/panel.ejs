@@ -1,0 +1,285 @@
+<%- include('costs/add') %>
+<%- include('wallets/add') %>
+
+     <form z-0>
+
+          <div class="row">
+
+               <div class="col-4 d-flex">
+
+                    <div class="mt-auto">
+                         <a href="/panel/portfele/dodaj" class="btn btn-outline-success mb-2 add-button-wallet">Dodaj</a>
+                    </div>
+
+               </div>
+
+               <div class="col-8">
+
+                    <div class="d-flex">
+                         <a href="/panel/kategorie" class="btn btn-outline-warning mb-3 mt-2">KATEGORIE</a>
+                         <a href="/panel/dodaj" class="btn btn-outline-warning mb-3 mt-2 ms-2">DODAJ</a>
+                         <a href="/panel/portfele" class="btn btn-outline-warning mb-3 mt-2 ms-2">PORTFELE</a>
+                         <a href="/" class="btn btn-outline-warning mb-3 mt-2 ms-2">STRONA GŁÓWNA</a>
+
+                         <div class="ms-auto">
+                              <input value="<%- query.q %>" class="input-group-sm" type="text" placeholder="Wyszukaj..."
+                                   name="q" id="">
+                              <button class="btn btn-outline-dark ms-2">Szukaj</button>
+                         </div>
+                    </div>
+
+                    <div class="d-flex">
+                         <div>
+                              <label for="">Typ</label> <br>
+                              <select class="form-select-sm" name="type" id="">
+                                   <option value="">WSZYSTKIE</option>
+                                   <option value="dochód" <%- query.type==='dochód' ? 'selected' : '' %>>Dochód</option>
+                                   <option value="koszt" <%- query.type==='koszt' ? 'selected' : '' %>>koszt</option>
+                              </select>
+                         </div>
+
+                         <div>
+                              <label for="sort">Sortuj wg</label> <br>
+                              <select class="form-select-sm" name="sort" id="sort">
+
+                                   <option value="">DOMYŚLNIE</option>
+                                   <option value="name|1" <%- query.sort==='name|1' ? 'selected' : '' %>>A-z</option>
+                                   <option value="name|-1" <%- query.sort==='name|-1' ? 'selected' : '' %>>Z-a</option>
+                                   <option value="amount|1" <%- query.sort==='amount|1' ? 'selected' : '' %>>Kwota
+                                        rosnąco
+                                   </option>
+                                   <option value="amount|-1" <%- query.sort==='amount|-1' ? 'selected' : '' %>>kwota
+                                        malejąco
+                                   </option>
+                                   <option value="date|1" <%- query.sort==='date|1' ? 'selected' : '' %>>Data (od
+                                        najnowszego)
+                                   </option>
+                                   <option value="date|-1" <%- query.sort==='date|-1' ? 'selected' : '' %>>Data (od
+                                        najstarszego)
+                                   </option>
+
+                              </select>
+                         </div>
+
+                         <div>
+                              <label for="category">Kategoria</label> <br>
+                              <select class="form-select-sm" name="category" id="category">
+
+                                   <option value="">WSZYSTKIE</option>
+                                   <option value="Brak kategorii" <%- query.category==='Brak kategorii' ? 'selected'
+                                        : '' %>
+                                        >Brak
+                                        kategorii</option>
+
+                                   <% categories.forEach(x=> { %>
+                                        <option value="<%- x.category %>" <%- query.category===x.category ? 'selected'
+                                             : '' %>><%- x.category %></option>
+                                        <% }) %>
+
+                              </select>
+                         </div>
+
+                         <div>
+                              <label for="">Portfel</label> <br>
+                              <select class="form-select-sm" name="wallet" id="">
+                                   <option value="">WSZYSTKIE</option>
+                                   <% wallets.forEach(wallet=> { %>
+                                        <option value="<%- wallet.name %>" <%- query.wallet===wallet.name ? 'selected'
+                                             : '' %>><%- wallet.name %></option>
+                                        <% }) %>
+                              </select>
+                         </div>
+
+                         <div>
+                              <label for="">Zakres</label> <br>
+                              <input value="<%- query.minamount %>" class="input-group-sm" style="width: 90px;"
+                                   type="text" placeholder="kwota min" name="minamount" id=""> <br>
+                              <input value="<%- query.maxamount %>" class="input-group-sm" style="width: 90px;"
+                                   type="text" placeholder="kwota max" name="maxamount" id=""> <br>
+                         </div>
+
+                    </div>
+
+                    <div class="d-flex">
+                         <div style="height: 2px;" class="mt-2">
+                              <button class="btn btn-outline-secondary">Zatwierdź</button>
+                              <a class="btn btn-outline-secondary reset-all">Zresetuj filtry</a>
+                              <a class="btn btn-outline-secondary reset">Zresetuj zakres</a>
+                         </div>
+
+                         <div class="mt-2 ms-auto">
+                              <nav aria-label="Page navigation example">
+                                   <ul class="pagination">
+                                        <li class="page-item pageBack">
+                                             <a class="page-link ps-5" href="#" aria-label="Previous">
+                                                  <span aria-hidden="true">&laquo;</span>
+                                             </a>
+                                        </li>
+                                        <% for ( let i=1; i <=resultsCount; i++) { %>
+                                             <li class="page-item numbers <%- page==i ? 'active' : '' %>"><a
+                                                       class="page-link" data-page="<%- i %>" href="#"><%- i %></a>
+                                             </li>
+                                             <% } %>
+                                                  <li class="page-item">
+                                                       <a class="page-link pe-5 pageForward"
+                                                            data-results="<%- resultsCount %>" href="#"
+                                                            aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                       </a>
+                                                  </li>
+                                   </ul>
+                              </nav>
+                         </div>
+                    </div>
+
+                    <div>
+                         <button type="button" class="btn btn-outline-success mb-2 add-button">Dodaj</button>
+                    </div>
+
+               </div>
+
+          </div>
+
+          <div class="row">
+
+               <%- include('wallets/wallets') %>
+
+                    <div class="col-8 card p-4" style="height: 475px;">
+
+                         <%- include('costs/costs') %>
+                         
+                    </div>
+
+          </div>
+
+     </form>
+
+     <script>
+
+          const pagesBack = document.querySelector('.pageBack')
+          const pagesForward = document.querySelector('.pageForward')
+          const pageNumber = document.querySelectorAll('.numbers')
+          const reset = document.querySelector('.reset')
+          const resetAll = document.querySelector('.reset-all')
+          const addButton = document.querySelector('.add-button')
+          const hidden = document.querySelector('.hidden')
+          const addClosed = document.querySelector('.add-closed')
+          const addClosed2 = document.querySelector('.add-closed2')
+          const btnIncome = document.querySelector('.income')
+          const btnCost = document.querySelector('.cost')
+          const addIncome = document.querySelector('.add-income')
+          const addCost = document.querySelector('.add-cost')
+
+          const pageBack = (e) => {
+               e.preventDefault()
+               const search = new URLSearchParams(window.location.search)
+               let page = search.get('page')
+               page = Number(page)
+
+               if (page > 1) {
+                    page -= 1
+                    search.set('page', page)
+                    const url = window.location.origin + window.location.pathname + '?' + search.toString()
+                    window.location.href = url
+               }
+
+          }
+
+          const pageForward = (e) => {
+               e.preventDefault()
+               const search = new URLSearchParams(window.location.search)
+               let page = search.get('page')
+               page = Number(page)
+               const resultsCount = e.target.dataset.results
+
+               const url = () => {
+                    search.set('page', page)
+                    const url = window.location.origin + window.location.pathname + '?' + search.toString()
+                    window.location.href = url
+               }
+
+               if (page < resultsCount) {
+                    if (page != '' && pageNumber.length > 1) {
+                         page += 1
+                         url()
+                    } else if (pageNumber.length > 1) {
+                         page += 2
+                         url()
+                    }
+
+
+               }
+          }
+
+          const pageChange = (e) => {
+               e.preventDefault()
+               const search = new URLSearchParams(window.location.search)
+               search.set('page', e.target.dataset.page)
+               const url = window.location.origin + window.location.pathname + '?' + search.toString()
+               window.location.href = url
+          }
+
+          const rangeReset = (e) => {
+               e.preventDefault()
+               const search = new URLSearchParams(window.location.search)
+               search.set('minamount', '')
+               search.set('maxamount', '')
+               const url = window.location.origin + window.location.pathname + '?' + search.toString()
+               window.location.href = url
+          }
+
+          const resAll = (e) => {
+               e.preventDefault()
+               const search = new URLSearchParams(window.location.search)
+               search.set('q', '')
+               search.set('type', '')
+               search.set('sort', '')
+               search.set('category', '')
+               search.set('wallet', '')
+               search.set('minamount', '')
+               search.set('maxamount', '')
+
+               const url = window.location.origin + window.location.pathname + '?' + search.toString()
+               window.location.href = url
+          }
+
+          const chengeHidden = (e) => {
+
+               if (hidden.classList.contains('show')) {
+                    hidden.classList.remove('show')
+               } else {
+                    hidden.classList.add('show')
+               }
+          }
+
+          const activatedIncome = () => {
+               btnIncome.classList.add('activedIncome')
+               addCost.classList.remove('show')
+               addIncome.classList.add('show')
+               btnCost.classList.remove('activedCost')
+          }
+
+          const activatedCost = () => {
+               btnCost.classList.add('activedCost')
+               addIncome.classList.remove('show')
+               addIncome.classList.add('hidden')
+               addCost.classList.add('show')
+               btnIncome.classList.remove('activedIncome')
+
+          }
+
+          document.querySelectorAll('.pagination .numbers').forEach(x => {
+               x.addEventListener('click', pageChange)
+          })
+
+          pagesBack.addEventListener('click', pageBack)
+          pagesForward.addEventListener('click', pageForward)
+          reset.addEventListener('click', rangeReset)
+          resetAll.addEventListener('click', resAll)
+          addButton.addEventListener('click', chengeHidden)
+          addClosed.addEventListener('click', chengeHidden)
+          addClosed2.addEventListener('click', chengeHidden)
+          btnIncome.addEventListener('click', activatedIncome)
+          btnCost.addEventListener('click', activatedCost)
+
+     </script>

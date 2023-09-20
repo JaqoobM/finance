@@ -1,0 +1,31 @@
+<form action="/panel/dodaj/dochod" method="POST" class="add-income">
+
+     <div class="mb-3 mt-3 d-flex flex-column"><label for="">Nazwa</label>
+          <input class="input-group-sm" type="text" name="name">
+     </div>
+     <div class="mb-3 d-flex flex-column"><label for="">Kwota</label>
+          <input class="input-group-sm" type="number" name="amount">
+     </div>
+     <div class="mb-3 d-flex flex-column"><label for="">Portfel</label>
+          <select class="form-select-sm" name="wallet" id="">
+               <% wallets.forEach(wallet=> { %>
+                    <option value="<%- wallet.name %>"><%- wallet.name %></option>
+                    <% }) %>
+          </select>
+     </div>
+     <div class="mb-3 d-flex flex-column"><label for="">Kategoria</label>
+          <select class="form-select-sm" name="category" id="">
+               <option value="Brak kategorii">Brak kategorii</option>
+               <% categories.forEach(x=> { %>
+                    <option value="<%- x.category %>"><%- x.category %></option>
+                    <% }) %>`
+          </select>
+     </div>
+     <div class="mb-3 d-flex flex-column"><label for="">Data</label>
+          <input type="date" name="date">
+     </div>
+
+     <button class="btn btn-success">Zatwierdź</button>
+     <button type="button" class="btn btn-outline-warning add-closed">Zamknij</button>
+
+</form>

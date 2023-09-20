@@ -1,0 +1,36 @@
+<% if (costs.length> 0) { %>
+     <% costs.forEach(cost=> { %>
+          <div style="position: relative;" class="card mb-1">
+               <div style="padding: 8px;" class="card-body">
+                    <div class="d-flex">
+                         <p style="margin-bottom: 0;"
+                              class="card-title h5 <%- cost.type == 'dochód' ? 'text-success' : 'text-danger' %>">
+                              <%= cost.name %>
+                                   <p class="ms-5" style="margin: 0;">
+                                        <%= cost.category %> |
+                                   </p>
+                                   <p class="ms-2">
+                                        <%= cost.date %> |
+                                   </p>
+                                   <p class="ms-2"><%- cost.wallet %></p>
+                         </p>
+                    </div>
+
+                    <p class="h5" style="margin: 0;">
+                         <%= cost.amount %>zł
+                    </p>
+
+                    <div style="position: absolute; top: 2px; right: 2px;">
+                         <a href="/panel/<%= cost.name %>/edytuj"
+                              class="btn btn-outline-primary">Edytuj</a>
+                         <a href="/panel/<%= query.page || 1 %>/<%= cost.name %>/usun"
+                              class="btn btn-outline-danger">Usuń</a>
+                    </div>
+               </div>
+          </div>
+          <% }) %>
+               <% } else { %>
+                    <p class="h5 text-center text-secondary">Brak kosztów/dochodów do
+                         wyświetlenia
+                    </p>
+                    <% } %>
