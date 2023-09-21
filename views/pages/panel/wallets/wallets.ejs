@@ -1,9 +1,13 @@
 <div class="col-4 card p-4">
      <% if (wallets.length> 0) { %>
           <% wallets.forEach(wallet=> { %>
-               <div class="card mb-1 p-2">
+               <div class="card mb-1 p-2" style="position: relative;">
                     <p class="h5"><%- wallet.name %></p>
                     <p class="text-primary h5"><%- wallet.amount %>zł</p>
+                    <div style="position: absolute; right: 2px; top: 2px;">
+                         <a class="btn btn-outline-primary" href="/panel/portfele/<%= wallet.name %>/edytuj">Edytuj</a>
+                         <a class="btn btn-outline-danger" href="/panel/portfele/<%= wallet.name %>/usun">Usuń</a>
+                    </div>
                </div>
                <% }) %>
                     <% } else { %>

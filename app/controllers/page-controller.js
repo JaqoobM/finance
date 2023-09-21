@@ -450,7 +450,7 @@ class PageController {
 
 		const wallet = await Wallet.findOne({ name: name });
 
-		res.render('pages/edit-wallet', {
+		res.render('pages/panel/wallets/edit-wallet', {
 			wallet,
 		});
 	}
@@ -464,7 +464,7 @@ class PageController {
 
 		try {
 			wallet.save();
-			res.redirect('/panel/portfele');
+			res.redirect('/panel');
 		} catch (e) {
 			console.log('BŁĄD PRZY EDYCJI PORTFELA');
 		}
@@ -476,7 +476,7 @@ class PageController {
 		try {
 			await Cost.deleteMany({ wallet: name });
 			await Wallet.deleteOne({ name: name });
-			res.redirect('/panel/portfele');
+			res.redirect('/panel');
 		} catch (e) {
 			console.log('BŁĄD PRZY USUWANIIU PORTFELA');
 		}
