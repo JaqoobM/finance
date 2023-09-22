@@ -16,6 +16,9 @@ class UserControler {
 			res.redirect('/zarejestruj');
 		} catch (e) {
 			console.log('BŁĄD REJESTRACJI');
+			res.render('pages/auth/register', {
+				errors: e.errors,
+			});
 		}
 	}
 

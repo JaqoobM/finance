@@ -21,7 +21,7 @@ app.use(express.static('public'));
 app.use('/', express.urlencoded({ extended: true }));
 
 // middleware
-// app.use('/', require('./middleware/view-wariables'))
+app.use('/', require('./middleware/view-wariables'))
 
 // routing
 app.use(require('./routes/web'))

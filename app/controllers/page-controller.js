@@ -194,7 +194,7 @@ class PageController {
 		const categories = await Category.find({ type: 'koszt' });
 		const wallets = await Wallet.find({});
 
-		res.render('pages/add-cost', {
+		res.render('pages/panel/costs/paritals/add-cost', {
 			categories,
 			wallets,
 		});

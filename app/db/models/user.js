@@ -7,6 +7,7 @@ const userSchema = new Schema({
 		required: true,
 		trim: true,
 		lowercase: true,
+		unique: true,
 	},
 
 	password: {
@@ -15,6 +16,12 @@ const userSchema = new Schema({
 	},
 });
 
-const User = mongoose.model('User', userSchema);
+userSchema.post('save', function (e, doc, next) {
+	if (e.code === 11000) {
+		e.errors = { email: { message: 'Ten email jest zajęty' } };
+	}
+	next();
+});
 
+const User = mongoose.model('User', userSchema);
 module.exports = User;
