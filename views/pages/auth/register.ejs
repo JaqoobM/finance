@@ -3,7 +3,7 @@
 <form method="POST">
 
      <label for="email">Email</label> <br>
-     <input type="email" name="email" id="emial" required> <br>
+     <input type="text" name="email" id="email" required> <br>
 
      <% if (errors?.email) { %>
           <p>
@@ -13,7 +13,6 @@
 
                <label class="mt-2" for="password">Hasło</label> <br>
                <input type="password" name="password" id="password" required> <br>
-
 
                <button class="btn btn-success mt-3">Zarejestruj</button>
 

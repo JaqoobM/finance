@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const { ValidateEmail } = require('../validators');
 
 const userSchema = new Schema({
 	email: {
@@ -8,6 +9,7 @@ const userSchema = new Schema({
 		trim: true,
 		lowercase: true,
 		unique: true,
+		validate: [ValidateEmail, 'Email jest nieprawidłowy']
 	},
 
 	password: {
@@ -18,7 +20,7 @@ const userSchema = new Schema({
 
 userSchema.post('save', function (e, doc, next) {
 	if (e.code === 11000) {
-		e.errors = { email: { message: 'Ten email jest zajęty' } };
+		e.errors = { email: { message: 'Ten email jest już zajęty' } };
 	}
 	next();
 });
