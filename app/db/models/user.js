@@ -20,7 +20,7 @@ const userSchema = new Schema({
 
 userSchema.post('save', function (e, doc, next) {
 	if (e.code === 11000) {
-		e.errors = { email: { message: 'Ten email jest już zajęty' } };
+		e.errors = { email: { message: 'Ten email jest zajęty' } };
 	}
 	next();
 });
